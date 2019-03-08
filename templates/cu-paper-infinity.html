@@ -5,9 +5,16 @@
 	<title>Columbia Paper Infinity</title>
 	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
-	<script src="1_log_sales.js"></script>
+	<script src="{{ url_for('static', filename = 'cu-paper-infinity.js') }}"></script>
+	<!-- <script src="cu-paper-infinity-old.js"></script> -->
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+	<script>
+        var sales = {{sales|tojson}}
+        var clients = {{clients|tojson}}
+    </script>
+
 	<style>
 		#headline{
 			background-color: #82dfe5;
@@ -47,7 +54,7 @@
 				Sales Log
 			</div>
 		</div>
-		<div class="all_logs"></div>
+		<div id="all_logs"></div>
 	</div>
 </body>
 </html>
