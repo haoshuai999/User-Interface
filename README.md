@@ -1,2 +1,2 @@
 # User-Interface
-Homework for user interface design class
+Practice user interface design in MVC style
