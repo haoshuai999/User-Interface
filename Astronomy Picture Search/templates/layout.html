@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% block head %}
+	<meta charset="UTF-8">
+	<title>{% block title %}{% endblock %} - Astronomy Picture Search</title>
+
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+	<script>
+		var data = {{data|tojson}}
+	</script>
+
+	<style>
+		#headline{
+			background-image: url({{ url_for('static', filename = 'background.jpg') }});
+			color: white;
+			text-align: center;
+			font-size: 40px;
+			font-weight: bold;
+		}
+		.navbar{
+			background-color: #000c67;
+		}
+		.nav-link{
+			color: white;
+			text-align: center;
+		}
+		.title{
+			color: white;
+			text-align: center;
+		}
+		.annotate{
+			font-size: 20px;
+			color: grey;
+			text-align: center;
+		}
+		.btn-dark:hover{
+			background-color: #000c67;
+		}
+	</style>
+	{% endblock %}
+</head>
+<body>
+	<div class="container">
+		{% block logocontent %}
+		{% endblock %}
+		<div class="row">
+			<nav class="col-md-12 navbar navbar-expand-md">
+				<div class="col-md-4 title">
+					Astronomy Picture Search
+				</div>
+				<div class="col-md-4">
+					<a class="nav-link" href="http://127.0.0.1:5000/Add_item">Add Item</a>
+				</div>
+				<div class="col-md-4">
+					<a class="nav-link" href="http://127.0.0.1:5000/Search">Search</a>
+				</div>
+			</nav>
+		</div>
+		{% block content %}
+		{% endblock %}
+	</div>
+</body>
+</html>

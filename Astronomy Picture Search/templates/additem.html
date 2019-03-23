@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+{% block title %}Add Item{% endblock %}
+{% block head %}
+	{{ super() }}
+	<script src="{{ url_for('static', filename = 'additem.js') }}"></script>
+	<style>
+		textarea{
+			font-size: 20px;
+		}
+		.inputtext{
+			font-size: 20px;
+			font-weight: bold;
+			text-align: center;
+		}
+		.inputborder{
+			border: 1px solid #000c67;
+		}
+		#success{
+			font-size: 25px;
+		}
+		#url{
+			font-size: 30px;
+			font-weight: bold;
+		}
+	</style>
+{% endblock %}
+{% block logocontent %}
+<div class="row">
+	<div class="col-md-12 p-5" id="headline">
+		Add New Photo to Database
+	</div>
+</div>
+{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+	<div class="col-md-8 p-2">
+		<p class="annotate">Please fill in all following blanks</p>
+	</div>
+</div>
+<div class="row inputborder">
+	<div class="col-md-12">
+		<div class="row">
+			<div class="col-md-6 p-2">
+				<div class="inputtext">Image Title:</div>
+			</div>
+			<div class="col-md-6 p-2">
+				<textarea id="imgtitle" cols="50" rows="1"></textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 p-2">
+				<div class="inputtext">Image Link:</div>
+			</div>
+			<div class="col-md-6 p-2">
+				<textarea id="imglink" cols="50" rows="1"></textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 p-2">
+				<div class="inputtext">Image Submit Time:</div>
+			</div>
+			<div class="col-md-6 p-2">
+				<input id="imgdate" type="date">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 p-2">
+				<div class="inputtext">Explanation:</div>
+			</div>
+			<div class="col-md-6 p-2">
+				<textarea id="imgexp" cols="50" rows="3"></textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 p-2">
+				<div class="inputtext">Image Author:</div>
+			</div>
+			<div class="col-md-6 p-2">
+				<textarea id="imgcopyright" cols="50" rows="1"></textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 p-2">
+				<div class="inputtext">Page Author:</div>
+			</div>
+			<div class="col-md-6 p-2">
+				<textarea id="imgauthor" cols="50" rows="1"></textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 p-2">
+				<div class="inputtext">Page Editor:</div>
+			</div>
+			<div class="col-md-6 p-2">
+				<textarea id="imgeditor" cols="50" rows="1"></textarea>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row justify-content-center">
+	<div class="col-md-6 p-2">
+		<button id="submit" type="button" class="btn btn-dark btn-block">Submit</button>
+	</div>
+</div>
+<div class="row justify-content-center p-2">
+	<p id="success"></p>
+	<p id="url"></p>
+</div>
+{% endblock %}

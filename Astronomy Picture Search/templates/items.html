@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block title %}Items{% endblock %}
+{% block head %}
+	{{ super() }}
+	<script>
+		var id = {{id|tojson}}
+	</script>
+	<script src="{{ url_for('static', filename = 'items.js') }}"></script>
+	<style>
+		p{
+			margin: 0;
+		}
+		.authordate{
+			text-align: center;
+		}
+		.ad{
+			background-color: #000c67;
+			color: white;
+		}
+		.ef{
+			color: grey;
+		}
+		.bottom{
+			text-align: center;
+		}
+	</style>
+{% endblock %}
+{% block logocontent %}
+<div class="row">
+	<div class="col-md-12 p-5" id="headline">
+	</div>
+</div>
+{% endblock %}
+{% block content %}
+<div class="row">
+	<div id="image" class="col-md-12 p-2">
+	</div>
+</div>
+<div class="row ad">
+	<div class="col-md-12 p-2 authordate">
+		<p id="author"></p>
+		<p id="date"></p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12 p-2 ef">
+		<p id="explanation"></p>
+		<p id="footer" class="bottom"></p>
+	</div>
+</div>	
+{% endblock %}
