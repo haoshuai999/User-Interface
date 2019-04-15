@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <style>
+	body { 
+		margin:0;
+		position: absolute;
+		top:0;
+		right:0;
+		bottom:0;
+		left:0; 
+	}
+	.ancientcolor{
+		background-color: #fed766;
+	}
+	.moderncolor{
+		background-color: #2ab7ca;
+	}
+	.headline{
+		font-size: 24px;
+		font-weight: bold;
+	}
+	.date{
+		font-size: 24px;
+	}
+  </style>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row m-0">
+			<div class="col-md-9">
+				<svg></svg>
+			</div>
+			<div class="col-md-3 p-0">
+				<div class="ancientcolor">
+					<div class="row m-1">
+						<div class="col-md-12 p-2 border-bottom border-dark text-center headline" id="cityname">Pella</div>
+					</div>
+					<div class="row m-1">
+						<div class="col-md-12 px-2 border-bottom border-dark text-center date" id="builtdate">Built in: <b>413BC</b></div>
+					</div>
+					<div class="row m-1">
+						<div class="col-md-12 p-1" id="country"><b>Country: </b>Kingdom of Macedon</div>
+						<div class="col-md-12 p-1" id="population"><b>Population: </b>17000</div>
+						<div class="col-md-12 p-1" id="description">The capital of Kingdom of Macedon and the birthplace of Alexander. Now the relics becomes a museum showing the history of ancient Macedon</div>
+					</div>
+				</div>
+				<div class="moderncolor">
+					<div class="row m-1">
+						<div class="col-md-12 p-2 border-bottom border-dark text-center headline" id="newname">Pella</div>
+					</div>
+					<div class="row m-1">
+						<div class="col-md-12 px-2 border-bottom border-dark text-center date" id="listeddate">Listed as Heritage: <b>2001</b></div>
+					</div>
+					<div class="row m-1">
+						<div class="col-md-12 p-1" id="newcountry"><b>Country: </b>Greece</div>
+						<div class="col-md-12 p-1" id="newpopulation"><b>Population: </b>2398</div>
+						<div class="col-md-12 p-1" id="newdescription">A village and a municipality in the Pella regional unit of Macedonia, Greece. It is located on the site of ancient Pella</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12"><button type="button" class="btn btn-secondary btn-lg btn-block">Homepage</button></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../static/map.js"></script>
+</body>

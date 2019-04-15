@@ -1,0 +1,114 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pella",
+        "country": "Kingdom of Macedon",
+        "population": 17000,
+        "builtdate": "413BC",
+        "description": "The capital of Kingdom of Macedon and the birthplace of Alexander. Now the relics becomes a museum showing the history of ancient Macedon",
+        "newname": "Pella",
+        "newcountry": "Greece",
+        "newpopulation": "2398",
+        "listeddate": 2001,
+        "newdescription": "A village and a municipality in the Pella regional unit of Macedonia, Greece. It is located on the site of ancient Pella"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.520777,
+          40.762179
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rhacotis",
+        "country": "Egypt",
+        "population": 1000,
+        "builtdate": "1000BC",
+        "description": "A small port and the home of sentinels who protected the Egyptian kingdom from outsider",
+        "newname": "Alexandria",
+        "newcountry": "Egypt",
+        "newpopulation": "5200000",
+        "listeddate": 2003,
+        "newdescription": "A port city founded by Alexander the Great on 331 BC, located on the Mediterranean Sea"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.918481,
+          31.219883
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Troy",
+        "country": "Greek Cities",
+        "population": 10000,
+        "builtdate": "3000BC",
+        "description": "A city famous for trojan war locating on the frontline between Achaemenid Empire and the Greeks. Alexander visited it in 334 BC",
+        "newname": "Troy (Heritage Site)",
+        "newcountry": "Turkey",
+        "newpopulation": "Inapplicable",
+        "listeddate": 1998,
+        "newdescription": "The city was abandoned at around 500AD, now it is one of UNESCO World Heritage Sites"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.251068,
+          39.966239
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Persepolis",
+        "country": "Achaemenid Empire",
+        "population": 8000,
+        "builtdate": "515BC",
+        "description": "The ceremonial capital of the Achaemenid Empire. The city was looted by Alexander’s army and a fire burned the palaces",
+        "newname": "Persepolis (Heritage Site)",
+        "newcountry": "Iran",
+        "newpopulation": "Inapplicable",
+        "listeddate": 1979,
+        "newdescription": "The city suffered a gradual decline after being conquered, and now it is one of UNESCO World Heritage Sites"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          52.891566,
+          29.935821
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Taxila",
+        "country": "Achaemenid Empire",
+        "population": 4000,
+        "builtdate": "1000BC",
+        "description": "A city with an important strategic location. The ruler of the city surrendered to Alexander in 326BC",
+        "newname": "Taxila",
+        "newcountry": "Pakistan",
+        "newpopulation": "48904",
+        "listeddate": 1980,
+        "newdescription": "The city was conquered by different empires several times and was abandoned in 5th century. A new Texila was built next to it and the ruins of old city is one of UNESCO World Heritage Sites"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.842041,
+          33.758984
+        ]
+      }
+    }
+]}
