@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="../static/scoutjq.js"></script>
+  <script src="../static/question.json"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <style>
+	body { 
+		margin:0;
+		position: absolute;
+		top:0;
+		right:0;
+		bottom:0;
+		left:0; 
+	}
+	.ancientcolor{
+		background-color: #fed766;
+	}
+	.headline{
+		font-size: 24px;
+		font-weight: bold;
+	}
+	.question{
+		font-size: 24px;
+	}
+	.op{
+		width: 150px;
+	}
+	.textgreen{
+		color: green;
+	}
+	.green{
+		background-color: green;
+	}
+	.textred{
+		color: red;
+	}
+	.red{
+		background-color: red;
+	}
+	.modal {
+	  display: none; /* Hidden by default */
+	  position: fixed; /* Stay in place */
+	  z-index: 1; /* Sit on top */
+	  padding-top: 100px; /* Location of the box */
+	  left: 0;
+	  top: 0;
+	  width: 100%; /* Full width */
+	  height: 100%; /* Full height */
+	  overflow: auto; /* Enable scroll if needed */
+	  background-color: rgb(0,0,0); /* Fallback color */
+	  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	}
+
+	/* Modal Content */
+	.modal-content {
+	  background-color: #fefefe;
+	  margin: auto;
+	  padding: 20px;
+	  border: 1px solid #888;
+	  width: 80%;
+	}
+	.display{
+		display: block;
+	}
+  </style>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<!-- The Modal -->
+		<div class="modal" id="modal0">
+			<div class="modal-content">
+				<h1 class="textgreen">Congratulations!</h1>
+				<p>You successfully gathered the important intelligence for Alexander's army.</p>
+				<button type="button" class="btn btn-warning btn-lg btn-block homepage">Homepage</button>
+			</div>
+		</div>
+		<div class="modal" id="modal1">
+			<div class="modal-content">
+				<h1 class="textred">Failure!</h1>
+				<p>The information you gather is not accurate enough, please try again.</p>
+				<button type="button" class="btn btn-warning btn-lg btn-block homepage">Homepage</button>
+			</div>
+		</div>
+		<div class="row m-0">
+			<div class="col-md-9">
+				<svg></svg>
+			</div>
+			<div class="col-md-3 p-0">
+				<div class="ancientcolor">
+					<div class="row m-1">
+						<div class="col-md-12 p-2 border-bottom border-dark text-center headline" id="cityname"></div>
+					</div>
+					<div class="row m-1">
+						<div class="col-md-12 px-2 border-bottom border-dark text-center question" id="question">Q: </div>
+					</div>
+					<div class="row m-1 text-center" id="options">
+						<div class="col-md-12 p-1"><button type="button" class="btn btn-primary btn-sm op" id="op1"></button></div>
+						<div class="col-md-12 p-1"><button type="button" class="btn btn-primary btn-sm op" id="op2"></button></div>
+						<div class="col-md-12 p-1"><button type="button" class="btn btn-primary btn-sm op" id="op3"></button></div>
+						<div class="col-md-12 p-1 border-bottom border-dark"><button type="button" class="btn btn-primary btn-sm op" id="op4"></button></div>
+					</div>
+					<div class="row m-1 text-center">
+						<div class="col-md-12 p-2" id="score"><b>Score: </b>0</div>
+					</div>
+				</div>
+				<div class="row" id="sub-btn">
+					<div class="col-md-12"><button type="button" class="btn btn-primary btn-lg btn-block" id="next">Next Question</button></div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 py-2"><button type="button" class="btn btn-warning btn-lg btn-block homepage">Homepage</button></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../static/scout.js"></script>
+</body>

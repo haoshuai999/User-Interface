@@ -1,0 +1,30 @@
+score = 0
+qdata = [
+	{
+		"City": "Pella",
+		"Question": "What's the population in ancient Pella?", 
+		"Option1": 4000,
+		"Option2": 8000,
+		"Option3": 13000,
+		"Option4": 17000,
+		"Answer": 17000
+	},
+	{
+		"City": "Pella",
+		"Question": "When was the city built?", 
+		"Option1": "413BC",
+		"Option2": "513BC",
+		"Option3": "613BC",
+		"Option4": "713BC",
+		"Answer": "413BC"
+	},
+	{
+		"City": "Rhacotis",
+		"Question": "Which country did Rhacotis belong to in 330BC?", 
+		"Option1": "Achaemenid Empire",
+		"Option2": "Egypt",
+		"Option3": "Kingdom of Macedon",
+		"Option4": "Roman Empire",
+		"Answer": "Egypt"
+	}
+]

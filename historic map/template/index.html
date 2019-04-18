@@ -3,19 +3,179 @@
 <head>
 	<meta charset="UTF-8">
 	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/2.0.0/scrollama.min.js"></script>
   	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  	<script src="../static/index.js"></script>
 	<title>Index</title>
+	<style>
+		.bighead{
+			font-size: 50px;
+			font-weight: bold;
+		}
+		.fix-width{
+			width: 400px;
+		}
+		#scroll {
+			position: relative;
+		}
+		.scroll__graphic {
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: auto;
+			width: 100%;
+			-webkit-transform: translate3d(0, 0, 0);
+			-moz-transform: translate3d(0, 0, 0);
+			transform: translate3d(0, 0, 0);
+		}
+
+		.scroll__graphic.is-fixed {
+			position: fixed;
+		}
+
+		.scroll__graphic.is-bottom {
+			bottom: 0;
+			top: auto;
+		}
+		.scroll__graphic .chart {
+			position: absolute;
+			right: 1px;
+			top: 50%;
+			-moz-transform: translateY(-50%);
+			-webkit-transform: translateY(-50%);
+			transform: translateY(-50%);
+		}
+		.scroll__text {
+			margin-top: 200px;
+			padding: 0px 2px;
+			max-width: 1500px;
+		}
+
+		.step {
+			display: inline-block;
+			opacity: 0;
+			padding: 2px;
+			text-align: center;
+			font-size: 40px;
+			font-weight: bold;
+		}
+
+		.step.is-active {
+			opacity: 1;
+		}
+	</style>
 </head>
 <body>
-	<div class="container-fluid"></div>
-		<div class="row">
-			<div class="col-md-12">Conquer Cities with Alexander the Great</div>
+	<section id='scroll'>
+		<!--  graphic container  -->
+		<div class='scroll__graphic'>
+			<!--   actual graphic/chart   -->
+			<div class='chart'>
+				<p></p>
+			</div>
 		</div>
-		<div class="row"></div>
-		<div class="row">
-			<div class="col-md-12"><button class="btn btn-primary" id="worldmap">World Map</button></div>
-			<div class="col-md-12"><button class="btn btn-primary" id="scout">Start as a Scout</button></div>
-			<div class="col-md-12"><button class="btn btn-danger" onclick="window.close();">Exit</button></div>
+
+		<!--  step/text container  -->
+		<div class='scroll__text'>
+			<div class='step' data-step='1'>
+				Alexander III of Macedon (356 BC – 323 BC), commonly known as Alexander the Great, was a king (basileus) of the ancient Greek kingdom of Macedon
+			</div>
+			<div class='step' data-step='2'>
+				He spent most of his ruling years on an unprecedented military campaign through Asia and northeast Africa, and by the age of thirty he had created one of the largest empires of the ancient world
+			</div>
+			<div class='step' data-step='3'>
+				He conquered a lot of famous ancient cities such Troy which is famous for trojan war, Rhacotis which became the location of Library of Alexandria and Persepolis which was the capital of Achaemenid Empire 
+			</div>
+			<div class='step' data-step='4'>
+				Click "World Map" to have a glimpse of the cities that have been conquered or ruled by Alexander the Great<br><br>
+				Click "Expedition" to play as a scout of Alexander's army and gather intelligence for him
+			</div>
 		</div>
+	</section>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12 pb-3 px-3 text-center bighead">Conquer Cities with Alexander the Great</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<img src="../static/Alexander_the_Great_mosaic.jpg" alt="Alexander_the_Great" class="img-fluid" width="500">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 p-2 text-center"><button class="btn btn-primary fix-width" id="worldmap">World Map</button></div>
+			<div class="col-md-12 p-2 text-center"><button class="btn btn-primary fix-width" id="scout">Expedition</button></div>
+			<div class="col-md-12 p-2 text-center"><button class="btn btn-danger fix-width" id="exit">Exit</button></div>
+		</div>
+	</div>
+	<script>
+		// scrollama basic
+		var container = document.querySelector('#scroll');
+		var text = container.querySelector('.scroll__text');
+		var steps = text.querySelectorAll('.step');
+		// initialize the scrollama
+		var scroller = scrollama();
+		// scrollama event handlers
+		function handleStepEnter(response) {
+			// response = { element, direction, index }
+			console.log(response.index, '-------- enter');
+			// add to color to current step
+			response.element.classList.add('is-active');
+		}
+		function handleStepExit(response) {
+			// response = { element, direction, index }
+			console.log(response.index, '-------- exit');
+			// remove color from current step
+			response.element.classList.remove('is-active');
+		}
+		function handleStepProgress(response) {
+			// response = { element, progress, index }
+			console.log(response.index, '-------- progress -', response.progress);
+		}
+		function handleResize() {
+			// 1. update height of step elements for breathing room between steps
+			var stepHeight = Math.floor(window.innerHeight);
+			$(".step").css('height', stepHeight + 'px');
+
+			// 2. update height of graphic element
+			// var bodyWidth = d3.select('body').node().offsetWidth;
+
+			// $graphic
+			// 	.style('height', window.innerHeight + 'px');
+
+			// 3. update width of chart by subtracting from text width
+			//var chartMargin = 32;
+			//var textWidth = $(".scroll__text").node().offsetWidth;
+			//var chartWidth = $graphic.node().offsetWidth - textWidth - chartMargin;
+			// make the height 1/2 of viewport
+			//var chartHeight = Math.floor(window.innerHeight / 2);
+
+			// $chart
+			// 	.style('width', chartWidth + 'px')
+			// 	.style('height', chartHeight + 'px');
+
+			// 4. tell scrollama to update new element dimensions
+			scroller.resize();
+		}
+		function init() {
+			// set random padding for different step heights (not required)
+			handleResize();
+			// 1. setup the scroller with the bare-bones options
+			// this will also initialize trigger observations
+			// 3. bind scrollama event handlers (this can be chained like below)
+			scroller.setup({
+				step: '.scroll__text .step',
+				//debug: true,
+				offset: 0.8,
+				// progress: true,
+			})
+				.onStepEnter(handleStepEnter)
+				.onStepExit(handleStepExit)
+				// .onStepProgress(handleStepProgress)
+			// setup resize event
+			window.addEventListener('resize', scroller.handleResize);
+		}
+		// kick things off
+		init();
+	</script>
 </body>
 </html>
