@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/2.0.0/scrollama.min.js"></script>
+  	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  	<script src="{{ url_for('static', filename = 'index.js') }}"></script>
+	<title>Index</title>
+	<style>
+		.bighead{
+			font-size: 50px;
+			font-weight: bold;
+		}
+		.fix-width{
+			width: 400px;
+		}
+		.step {
+			text-align: center;
+			font-size: 40px;
+			font-weight: bold;
+		}
+		.step p{
+			color: white;
+			padding-top: 215px;
+			padding-bottom: 215px;
+		}
+		.bg1{
+			background:
+		        /* top, transparent black, faked with gradient */ 
+		        linear-gradient(
+		          rgba(0, 0, 0, 0.5), 
+		          rgba(0, 0, 0, 0.5)
+		        ),
+		        /* bottom, image */
+		        url('{{ url_for('static', filename = 'intro1.jpg') }}');
+			background-size: 100%;
+		}
+		.bg2{
+			background:
+		        /* top, transparent black, faked with gradient */ 
+		        linear-gradient(
+		          rgba(0, 0, 0, 0.5), 
+		          rgba(0, 0, 0, 0.5)
+		        ),
+		        /* bottom, image */
+		        url('{{ url_for('static', filename = 'intro2.jpg') }}');
+			/*background-image: url('../static/intro2.jpg');*/
+			background-size: 100% 100%;
+		}
+		.bg3{
+			background:
+		        /* top, transparent black, faked with gradient */ 
+		        linear-gradient(
+		          rgba(0, 0, 0, 0.5), 
+		          rgba(0, 0, 0, 0.5)
+		        ),
+		        /* bottom, image */
+		        url('{{ url_for('static', filename = 'intro3.jpg') }}');
+			background-size: 100% 100%;
+		}
+		.bg4{
+			background:
+		        /* top, transparent black, faked with gradient */ 
+		        linear-gradient(
+		          rgba(0, 0, 0, 0.5), 
+		          rgba(0, 0, 0, 0.5)
+		        ),
+		        /* bottom, image */
+		        url('{{ url_for('static', filename = 'intro4.jpg') }}');
+			background-size: 100%;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container-fluid">
+		<div class='row'>
+			<div class='step bg1' data-step='1'>
+				<p>Alexander III of Macedon (356 BC – 323 BC), commonly known as Alexander the Great, was a king (basileus) of the ancient Greek Kingdom of Macedon</p>
+			</div>
+			<div class='step bg2' data-step='2'>
+				<p>He spent most of his ruling years on an unprecedented military campaign through Asia and northeast Africa, and by the age of thirty he had created one of the largest empires of the ancient world</p>
+			</div>
+			<div class='step bg3' data-step='3'>
+				<p>He conquered a lot of famous ancient cities such as Troy which is famous for trojan war, Rhacotis which became the location of Library of Alexandria and Persepolis which was the capital of Achaemenid Empire</p> 
+			</div>
+			<div class='step bg4' data-step='4'>
+				<p>Click "World Map" to have a glimpse of the cities that have been conquered or ruled by Alexander the Great<br><br>
+				Click "Expedition" to play as a scout of Alexander's army and gather intelligence for him</p>
+			</div>
+		</div>
+		<div class="row m-3">
+			<div class="col-md-12 p-3 text-center bighead">Conquer Cities with Alexander the Great</div>
+		</div>
+		<div class="row m-3">
+			<div class="col-md-12 text-center">
+				<img src="{{ url_for('static', filename = 'Alexander_the_Great_mosaic.jpg') }}" alt="Alexander_the_Great" class="img-fluid" width="600">
+			</div>
+		</div>
+		<div class="row m-3">
+			<div class="col-md-12 p-2 text-center"><button class="btn btn-primary fix-width" id="worldmap">World Map</button></div>
+			<div class="col-md-12 p-2 text-center"><button class="btn btn-primary fix-width" id="scout">Expedition</button></div>
+		</div>
+	</div>
+</body>
+</html>

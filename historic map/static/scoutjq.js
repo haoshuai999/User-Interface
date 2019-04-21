@@ -51,7 +51,7 @@ $(document).ready(function(){
 	$("#next").addClass("disabled");
 	$(".homepage").click(function(){
 		if(confirm("Are you sure you want to go back to homepage?")){
-			window.location.href='index.html'
+			window.location.href='/#scout'
 		}
 	});
 	showquestions(page);

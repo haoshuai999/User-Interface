@@ -28,11 +28,9 @@
 			-moz-transform: translate3d(0, 0, 0);
 			transform: translate3d(0, 0, 0);
 		}
-
 		.scroll__graphic.is-fixed {
 			position: fixed;
 		}
-
 		.scroll__graphic.is-bottom {
 			bottom: 0;
 			top: auto;
@@ -50,7 +48,6 @@
 			padding: 0px 2px;
 			max-width: 1500px;
 		}
-
 		.step {
 			display: inline-block;
 			opacity: 0;
@@ -59,7 +56,6 @@
 			font-size: 40px;
 			font-weight: bold;
 		}
-
 		.step.is-active {
 			opacity: 1;
 		}
@@ -135,24 +131,19 @@
 			// 1. update height of step elements for breathing room between steps
 			var stepHeight = Math.floor(window.innerHeight);
 			$(".step").css('height', stepHeight + 'px');
-
 			// 2. update height of graphic element
 			// var bodyWidth = d3.select('body').node().offsetWidth;
-
 			// $graphic
 			// 	.style('height', window.innerHeight + 'px');
-
 			// 3. update width of chart by subtracting from text width
 			//var chartMargin = 32;
 			//var textWidth = $(".scroll__text").node().offsetWidth;
 			//var chartWidth = $graphic.node().offsetWidth - textWidth - chartMargin;
 			// make the height 1/2 of viewport
 			//var chartHeight = Math.floor(window.innerHeight / 2);
-
 			// $chart
 			// 	.style('width', chartWidth + 'px')
 			// 	.style('height', chartHeight + 'px');
-
 			// 4. tell scrollama to update new element dimensions
 			scroller.resize();
 		}

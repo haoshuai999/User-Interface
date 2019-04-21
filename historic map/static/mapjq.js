@@ -1,5 +1,7 @@
 $(document).ready(function(){
 	$("#homepage").click(function(){
-		window.location.href='index.html'
+		if(confirm("Are you sure you want to go back to homepage?")){
+			window.location.href='/#worldmap'
+		}
 	})
 });

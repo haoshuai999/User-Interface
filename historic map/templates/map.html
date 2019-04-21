@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="../static/mapjq.js"></script>
+  <script src="{{ url_for('static', filename = 'mapjq.js') }}"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
   <style>
 	body { 
@@ -69,5 +69,5 @@
 			</div>
 		</div>
 	</div>
-	<script src="../static/map.js"></script>
+	<script src="{{ url_for('static', filename = 'map.js') }}"></script>
 </body>

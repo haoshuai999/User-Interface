@@ -1,5 +1,4 @@
-score = 0
-qdata = [
+[
 	{
 		"City": "Pella",
 		"Question": "What's the population in ancient Pella?", 

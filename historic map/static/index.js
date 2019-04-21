@@ -1,13 +1,8 @@
 $(document).ready(function(){
 	$("#worldmap").click(function(){
-		window.location.href='map.html'
+		window.location.href='intelligence'
 	})
 	$("#scout").click(function(){
-		window.location.href='scout.html'
-	})
-	$("#exit").click(function(){
-		if(confirm("Do you really want to exit?")){
-			window.close();
-		}
+		window.location.href='expedition'
 	})
 });
