@@ -3,13 +3,15 @@
   <meta charset="utf-8">
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
   <script src="{{ url_for('static', filename = 'scoutjq.js') }}"></script>
 <!--   <script src="../static/question.json"></script> -->
   <script>
-  	qdata = {{qdata|tojson}};
-  	score = {{score}};
+  	var score = {{score}}
+  	var page = {{page}}
   </script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <style>
 	body { 
 		margin:0;
@@ -108,7 +110,7 @@
 						<div class="col-md-12 p-1 border-bottom border-dark"><button type="button" class="btn btn-primary btn-sm op" id="op4"></button></div>
 					</div>
 					<div class="row m-1 text-center">
-						<div class="col-md-12 p-2" id="score"><b>Score: </b>0</div>
+						<div class="col-md-12 p-2" id="score"><b>Score: </b></div>
 					</div>
 				</div>
 				<div class="row" id="sub-btn">
@@ -119,6 +121,9 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div id="dialog-confirm" title="Go back to homepage?">
+		<p></p>
 	</div>
 	<script src="../static/scout.js"></script>
 </body>

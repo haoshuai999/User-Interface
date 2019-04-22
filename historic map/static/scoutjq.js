@@ -1,59 +1,172 @@
-function showquestions(page){
-	$("#cityname").replaceWith("<div class='col-md-12 p-2 border-bottom border-dark text-center headline' id='cityname'>" + qdata[page-1].City)
-	$("#question").replaceWith("<div class='col-md-12 px-2 border-bottom border-dark text-center question' id='question'>Q:" + qdata[page-1].Question)
-	$("#op1").replaceWith("<button type='button' class='btn btn-primary btn-sm op' id='op1'>" + qdata[page-1].Option1 + "</button>")
-	$("#op2").replaceWith("<button type='button' class='btn btn-primary btn-sm op' id='op2'>" + qdata[page-1].Option2 + "</button>")
-	$("#op3").replaceWith("<button type='button' class='btn btn-primary btn-sm op' id='op3'>" + qdata[page-1].Option3 + "</button>")
-	$("#op4").replaceWith("<button type='button' class='btn btn-primary btn-sm op' id='op4'>" + qdata[page-1].Option4 + "</button>")
+function showquestions(qdata,score){
+	$("#cityname").replaceWith("<div class='col-md-12 p-2 border-bottom border-dark text-center headline' id='cityname'>" + qdata.City)
+	$("#question").replaceWith("<div class='col-md-12 px-2 border-bottom border-dark text-center question' id='question'>Q:" + qdata.Question)
+	$("#op1").replaceWith("<button type='button' class='btn btn-primary btn-sm op' id='op1'>" + qdata.Option1 + "</button>")
+	$("#op2").replaceWith("<button type='button' class='btn btn-primary btn-sm op' id='op2'>" + qdata.Option2 + "</button>")
+	$("#op3").replaceWith("<button type='button' class='btn btn-primary btn-sm op' id='op3'>" + qdata.Option3 + "</button>")
+	$("#op4").replaceWith("<button type='button' class='btn btn-primary btn-sm op' id='op4'>" + qdata.Option4 + "</button>")
+	$("#score").replaceWith("<div class='col-md-12 p-2' id='score'><b>Score: </b>" + score)
 }
-function answerquestions(page){
+function answerquestions(){
 	$("#options").on("click",".op", function(){
-		if($(this).text()==qdata[page-1].Answer){
-			$(".op").addClass("red")
-			$(this).removeClass("red").addClass("green")
-			score += 10
-			$("#score").replaceWith("<div class='col-md-12 p-2' id='score'><b>Score: </b>" + score)
-		}
-		else{
-			for (i = 1; i <= 4; i++) {
-				if($("#op" + i).text()==qdata[page-1].Answer){
-					$("#op" + i).addClass("green")
-				}
-				else{
-					$("#op" + i).addClass("red")
-				}
+		user_answer = $(this).text()
+		$.ajax({
+			type: "POST",
+			url: "answer_quiz",                
+			dataType : "json",
+			contentType: "application/json; charset=utf-8",
+			data : JSON.stringify(user_answer),
+			success: function(result){
+				$("#score").replaceWith("<div class='col-md-12 p-2' id='score'><b>Score: </b>" + result["score"])
+				correct_index = result["correct_index"]
+				$(".op").addClass("red")
+				$("#op" + correct_index).removeClass("red").addClass("green")
+				$("#next").attr("disabled", false).removeClass("disabled")
+				$("#submit").attr("disabled", false).removeClass("disabled")
+				$(".homepage").attr("disabled", true).addClass("disabled")
+			},
+			error: function(request, status, error){
+				console.log("Error");
+				console.log(request)
+				console.log(status)
+				console.log(error)
 			}
-		}
-		$("#next").removeClass("disabled")
-		$("#submit").removeClass("disabled")
+		});
 	})
 	$("#next").click(function(){
-		page++
-		if(page == 3){
-			$("#next").replaceWith("<button type='button' class='btn btn-primary btn-lg btn-block' id='submit'>Submit Score</button>")
-		}
-		showquestions(page)
-		$("#next").addClass("disabled")
-		$("#submit").addClass("disabled")
+		getquestions(1)
 	})
 	$("#sub-btn").on("click","#submit", function(){
-		if(score==30){
-			$("#modal0").addClass("display")
-		}
-		else{
-			$("#modal1").addClass("display")
+		$.ajax({
+			type: "GET",
+			url: "refresh",                
+			dataType : "json",
+			contentType: "application/json; charset=utf-8",
+			success: function(result){
+				score = result["score"]
+				$(".homepage").attr("disabled", false).removeClass("disabled")
+				if(score==30){
+					$("#modal0").addClass("display")
+				}
+				else{
+					$("#modal1").addClass("display")
+				}
+			},
+			error: function(request, status, error){
+				console.log("Error");
+				console.log(request)
+				console.log(status)
+				console.log(error)
+			}
+		});
+	});
+}
+function getquestions(new_page){
+	$.ajax({
+		type: "POST",
+		url: "display_questions",                
+		dataType : "json",
+		contentType: "application/json; charset=utf-8",
+		data : JSON.stringify(new_page),
+		success: function(result){
+			addcity(result["page"])
+			showquestions(result["question"],result["score"])
+			if(result["page"] == 3){
+				$("#next").replaceWith("<button type='button' class='btn btn-primary btn-lg btn-block' id='submit'>Submit Score</button>")
+			}
+			$("#next").attr("disabled", true).addClass("disabled")
+			$("#submit").attr("disabled", true).addClass("disabled")
+			$(".homepage").attr("disabled", false).removeClass("disabled")
+		},
+		error: function(request, status, error){
+			console.log("Error");
+			console.log(request)
+			console.log(status)
+			console.log(error)
 		}
 	});
 }
-$(document).ready(function(){
-	console.log(qdata)
-	page = 1
-	$("#next").addClass("disabled");
-	$(".homepage").click(function(){
-		if(confirm("Are you sure you want to go back to homepage?")){
-			window.location.href='/#scout'
+function refresh(){
+	$.ajax({
+		type: "POST",
+		url: "refresh",                
+		dataType : "json",
+		contentType: "application/json; charset=utf-8",
+		success: function(result){
+			console.log(result)
+		},
+		error: function(request, status, error){
+			console.log("Error");
+			console.log(request)
+			console.log(status)
+			console.log(error)
 		}
 	});
-	showquestions(page);
-	answerquestions(page);
+}
+function exittip(page){
+	if(page == 3){
+		$("#dialog-confirm").dialog({
+			resizable: false,
+			height: "auto",
+			width: 400,
+			modal: true,
+			buttons: {
+			  "Yes": function() {
+				$(this).dialog("close")
+				refresh()
+				window.location.href='/#scout'
+			  },
+			  Cancel: function() {
+				$(this).dialog("close");
+			  }
+			}
+		});
+	}
+	else{
+		$("#dialog-confirm p").append("Do you want to save the progress?")
+		$("#dialog-confirm").dialog({
+			resizable: false,
+			height: "auto",
+			width: 400,
+			modal: true,
+			buttons: {
+			  "Yes": function() {
+				$(this).dialog("close")
+				window.location.href='/#scout'
+			  },
+			  "No": function() {
+				$(this).dialog("close")
+				refresh()
+				window.location.href='/#scout'
+			  },
+			  Cancel: function() {
+				$(this).dialog("close");
+			  }
+			}
+		});
+	}
+}
+$(document).ready(function(){
+	//console.log(page)
+	//console.log(score)
+	$("#next").attr("disabled", true).addClass("disabled");
+	$(".homepage").click(function(){
+		$.ajax({
+			type: "GET",
+			url: "refresh",                
+			dataType : "json",
+			contentType: "application/json; charset=utf-8",
+			success: function(result){
+				exittip(result["page"])
+			},
+			error: function(request, status, error){
+				console.log("Error");
+				console.log(request)
+				console.log(status)
+				console.log(error)
+			}
+		});
+	});
+	getquestions(0);
+	answerquestions();
 });

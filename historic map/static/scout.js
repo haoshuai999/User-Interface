@@ -13,45 +13,55 @@ var url = "https://gist.githubusercontent.com/haoshuai999/c2ef0b5f71808bbb2cfd71
 
 var city_url = "https://gist.githubusercontent.com/haoshuai999/8cf154c19be32079e8834aac7253bd65/raw/bb898762192e12f17b9d13ade901085b1a1e8dc0/city.geo.json";
 
-Promise.all([d3.json(url), d3.json(city_url)]).then(function(data) {
-  var country = data[0];
-  var city = data[1]
+d3.json(url).then(function(data) {
+  var country = data;
 
   console.log(data)
 
-  svg.append("path")
+  svg.append("g")
+	.attr("id","d3map")
+	.append("path")
 	.attr("d", path(country))
 	.attr("fill", "lightgray")
 	.attr("stroke", "white");
-  
-  svg.selectAll("circle")
-	.data(city.features)
-	.enter()
-	.append("circle")
-	.attr("r", 3.5)
-	.attr("cx", function(d) {
-		return projection(d.geometry.coordinates)[0]
-	})
-	.attr("cy", function(d) {
-		return projection(d.geometry.coordinates)[1]
-	})
-	.attr("fill", "darkgreen")
-	.attr("stroke", "white")
-	.attr("stroke-width",15)
-	.attr("stroke-opacity",0)
-	.attr("opacity", 0.5)
-  
-  svg.selectAll("text")
-	.data(city.features)
-	.enter()
-	.append("text")
-	.attr("x", function(d) { 
-		return projection(d.geometry.coordinates)[0]; 
-	})
-	.attr("y", function(d) { 
-		return projection(d.geometry.coordinates)[1]; 
-	})
-	.text( function (d) { 
-		return d.properties.name; 
-	})
 });
+
+function addcity(page){
+	var index = Math.ceil(page/2)
+	console.log(index)
+	d3.json(city_url).then(function(data) {
+		city = []
+		for (var i = 0; i < index; i++) {
+			city.push(data.features[i])
+		}
+		setTimeout(function(){
+			svg.select("#d3map").selectAll("circle")
+				.data(city)
+				.enter()
+				.append("circle")
+				.attr("r", 5.5)
+				.attr("cx", function(d) {
+					return projection(d.geometry.coordinates)[0]
+				})
+				.attr("cy", function(d) {
+					return projection(d.geometry.coordinates)[1]
+				})
+				.attr("fill", "darkgreen")
+				.attr("opacity", 0.5)
+
+			svg.select("#d3map").selectAll("text")
+				.data(city)
+				.enter()
+				.append("text")
+				.attr("x", function(d) { 
+					return projection(d.geometry.coordinates)[0]; 
+				})
+				.attr("y", function(d) { 
+					return projection(d.geometry.coordinates)[1]; 
+				})
+				.text( function (d) { 
+					return d.properties.name; 
+				})
+				});
+		}, 10000);
+}
