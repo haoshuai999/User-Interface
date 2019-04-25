@@ -11,7 +11,7 @@ var path = d3.geoPath().projection(projection);
 
 var url = "https://gist.githubusercontent.com/haoshuai999/c2ef0b5f71808bbb2cfd7166704db4af/raw/f2b4a24518785fbcb6248befc4dbb753cb8b1602/alexander.geo.json";
 
-var city_url = "https://gist.githubusercontent.com/haoshuai999/8cf154c19be32079e8834aac7253bd65/raw/2ea84e4256d56f45806adcb0580ed05cf278e8c4/city.geo.json";
+var city_url = "https://gist.githubusercontent.com/haoshuai999/8cf154c19be32079e8834aac7253bd65/raw/b32e602ae56a59c2546ba88b21f5c9be3e0b1a08/city.geo.json";
 
 d3.json(url).then(function(data) {
   var country = data;

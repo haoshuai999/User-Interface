@@ -45,7 +45,7 @@ function answerquestions(){
 			success: function(result){
 				score = result["score"]
 				$(".homepage").attr("disabled", false).removeClass("disabled")
-				if(score==30){
+				if(score==50){
 					$("#modal0").addClass("display")
 				}
 				else{
@@ -69,9 +69,10 @@ function getquestions(new_page){
 		contentType: "application/json; charset=utf-8",
 		data : JSON.stringify(new_page),
 		success: function(result){
+			console.log(result["page"])
 			addcity(result["page"])
 			showquestions(result["question"],result["score"])
-			if(result["page"] == 3){
+			if(result["page"] == 5){
 				$("#next").replaceWith("<button type='button' class='btn btn-primary btn-lg btn-block' id='submit'>Submit Score</button>")
 			}
 			$(".op").attr("disabled", false)
@@ -105,7 +106,7 @@ function refresh(){
 	});
 }
 function exittip(page){
-	if(page == 3){
+	if(page == 5){
 		$("#dialog-confirm").dialog({
 			resizable: false,
 			height: "auto",

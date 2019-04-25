@@ -10,14 +10,14 @@
 		"Index": 3
 	},
 	{
-		"City": "Pella",
-		"Question": "What the relationship between Alexander and Pella?", 
-		"Option1": "Pella was conquered by him",
-		"Option2": "Pella was his birthplace",
-		"Option3": "Pella was visited by him",
-		"Option4": "Pella was looted by his army",
-		"Answer": "Pella was his birthplace",
-		"Index": 2
+		"City": "Troy",
+		"Question": "What's the relationship between Alexander and Troy?", 
+		"Option1": "Troy was the capital of his kingdom",
+		"Option2": "Troy was his birthplace",
+		"Option3": "Troy was the first Asian city reached by him",
+		"Option4": "Troy was looted by his army",
+		"Answer": "Troy was the first Asian city reached by him",
+		"Index": 3
 	},
 	{
 		"City": "Alexandria",
@@ -28,5 +28,25 @@
 		"Option4": "Tower of Babel",
 		"Answer": "Lighthouse",
 		"Index": 1
+	},
+	{
+		"City": "Persepolis",
+		"Question": "Why conquered Persepolis means a lot to Alexander?", 
+		"Option1": "It had a famous lighthouse",
+		"Option2": "It was the capital of his rival",
+		"Option3": "It gave Alexander a reason to retreat",
+		"Option4": "It was the first city surrendered to him",
+		"Answer": "It was the capital of his rival",
+		"Index": 2
+	},
+	{
+		"City": "Taxila",
+		"Question": "How Alexander influenced Taxila?", 
+		"Option1": "He built a temple for local people",
+		"Option2": "He founded this city",
+		"Option3": "He destroyed many treasures in the city",
+		"Option4": "He brought Greek culture to local people",
+		"Answer": "He brought Greek culture to local people",
+		"Index": 4
 	}
 ]

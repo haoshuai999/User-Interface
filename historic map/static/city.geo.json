@@ -21,23 +21,6 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Alexandria",
-        "country": "Egypt",
-        "image": "/static/Alexandria.png",
-        "key1": "Founded by Alexander and named after him",
-        "key2": "Location of Lighthouse of Alexandria and Library of Alexandria"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          29.918481,
-          31.219883
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "name": "Troy",
         "country": "Self-government",
         "image": "/static/Troy.jpg",
@@ -49,6 +32,23 @@
         "coordinates": [
           26.251068,
           39.966239
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Alexandria",
+        "country": "Egypt",
+        "image": "/static/Alexandria.png",
+        "key1": "Founded by Alexander and named after him",
+        "key2": "Became a prosperous city until today and was famous for Lighthouse of Alexandria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.918481,
+          31.219883
         ]
       }
     },
