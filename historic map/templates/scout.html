@@ -19,7 +19,9 @@
 		top:0;
 		right:0;
 		bottom:0;
-		left:0; 
+		left:0;
+		background-image: url('{{ url_for('static', filename = 'bgmap.jpg') }}');
+		background-size: 100%;
 	}
 	.ancientcolor{
 		background-color: #fed766;
@@ -37,15 +39,18 @@
 	.textgreen{
 		color: green;
 	}
+	.red{
+		background-color: red !important;
+	}
 	.green{
-		background-color: green;
+		background-color: green !important;
 	}
 	.textred{
 		color: red;
 	}
-	.red{
-		background-color: red;
-	}
+/*	button:disabledr{
+		background-color: red !important;
+	}*/
 	.modal {
 	  display: none; /* Hidden by default */
 	  position: fixed; /* Stay in place */

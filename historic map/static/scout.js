@@ -41,6 +41,7 @@ function addcity(page){
 				.append("circle")
 				.attr("r", 5.5)
 				.attr("cx", function(d) {
+					console.log(city)
 					return projection(d.geometry.coordinates)[0]
 				})
 				.attr("cy", function(d) {
@@ -48,6 +49,9 @@ function addcity(page){
 				})
 				.attr("fill", "darkgreen")
 				.attr("opacity", 0.5)
+				.attr("stroke", "white")
+				.attr("stroke-width",15)
+				.attr("stroke-opacity",0)
 
 			svg.select("#d3map").selectAll("text")
 				.data(city)

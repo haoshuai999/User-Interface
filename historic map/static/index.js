@@ -1,8 +1,14 @@
 $(document).ready(function(){
+	$("#background").click(function(){
+		$("#modal").addClass("displaybg")
+	})
 	$("#worldmap").click(function(){
 		window.location.href='intelligence'
 	})
 	$("#scout").click(function(){
 		window.location.href='expedition'
+	})
+	$("#clo").on("click","#close",function(){
+		$("#modal").removeClass("displaybg")
 	})
 });

@@ -19,8 +19,8 @@ function answerquestions(){
 			success: function(result){
 				$("#score").replaceWith("<div class='col-md-12 p-2' id='score'><b>Score: </b>" + result["score"])
 				correct_index = result["correct_index"]
-				$(".op").addClass("red")
-				$("#op" + correct_index).removeClass("red").addClass("green")
+				$(".op").attr("disabled", true).addClass("red")
+				$("#op" + correct_index).attr("disabled", true).removeClass("red").addClass("green")
 				$("#next").attr("disabled", false).removeClass("disabled")
 				$("#submit").attr("disabled", false).removeClass("disabled")
 				$(".homepage").attr("disabled", true).addClass("disabled")
@@ -74,6 +74,7 @@ function getquestions(new_page){
 			if(result["page"] == 3){
 				$("#next").replaceWith("<button type='button' class='btn btn-primary btn-lg btn-block' id='submit'>Submit Score</button>")
 			}
+			$(".op").attr("disabled", false)
 			$("#next").attr("disabled", true).addClass("disabled")
 			$("#submit").attr("disabled", true).addClass("disabled")
 			$(".homepage").attr("disabled", false).removeClass("disabled")

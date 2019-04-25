@@ -1,32 +1,32 @@
 [
 	{
 		"City": "Pella",
-		"Question": "What's the population in ancient Pella?", 
-		"Option1": "4000",
-		"Option2": "8000",
-		"Option3": "13000",
-		"Option4": "17000",
-		"Answer": "17000",
-		"Index": 4
-	},
-	{
-		"City": "Pella",
-		"Question": "When was the city built?", 
-		"Option1": "413BC",
-		"Option2": "513BC",
-		"Option3": "613BC",
-		"Option4": "713BC",
-		"Answer": "413BC",
-		"Index": 1
-	},
-	{
-		"City": "Rhacotis",
-		"Question": "Which country did Rhacotis belong to in 330BC?", 
+		"Question": "Which country did Pella belong to in 330BC?", 
 		"Option1": "Achaemenid Empire",
 		"Option2": "Egypt",
 		"Option3": "Kingdom of Macedon",
 		"Option4": "Roman Empire",
-		"Answer": "Egypt",
+		"Answer": "Kingdom of Macedon",
+		"Index": 3
+	},
+	{
+		"City": "Pella",
+		"Question": "What the relationship between Alexander and Pella?", 
+		"Option1": "Pella was conquered by him",
+		"Option2": "Pella was his birthplace",
+		"Option3": "Pella was visited by him",
+		"Option4": "Pella was looted by his army",
+		"Answer": "Pella was his birthplace",
 		"Index": 2
+	},
+	{
+		"City": "Alexandria",
+		"Question": "What's the landmark of ancient Alexandria?", 
+		"Option1": "Lighthouse",
+		"Option2": "Pyramid",
+		"Option3": "The Great Wall",
+		"Option4": "Tower of Babel",
+		"Answer": "Lighthouse",
+		"Index": 1
 	}
 ]

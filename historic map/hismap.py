@@ -11,8 +11,14 @@ abs_file_path = os.path.join(script_dir, rel_path).replace("\\","/")
 with open(abs_file_path) as json_file:
 	qdata = json.load(json_file)
 
+rel_path2 = "static\\city.geo.json"
+abs_file_path2 = os.path.join(script_dir, rel_path2).replace("\\","/")
+with open(abs_file_path2) as json_file2:
+	citydata = json.load(json_file2)
+
 score = 0
 page = 1
+tutorpage = 1
 
 @app.route('/')
 def index():  
@@ -62,15 +68,44 @@ def display_questions():
 @app.route('/refresh', methods=['GET', 'POST'])
 def refresh():
 	global page
+	global tutorpage
 	global score
 
 	if request.method == 'POST':
 		page = 1
+		tutorpage = 1
 		score = 0
 
 		return "Success"
 	elif request.method == 'GET':
 		return jsonify(score=score,page=page)
+
+@app.route('/tutorial', methods=['GET', 'POST'])
+def tutorial():
+	global tutorpage
+	global citydata
+
+	if request.method == 'GET':
+		city = {
+			"City": citydata["features"][tutorpage - 1]["properties"]["name"],
+			"URL": citydata["features"][tutorpage - 1]["properties"]["image"], 
+			"Key1": citydata["features"][tutorpage - 1]["properties"]["key1"],
+			"Key2": citydata["features"][tutorpage - 1]["properties"]["key2"]
+		}
+
+		return jsonify(city=city)
+
+	elif request.method == 'POST':
+		tutorpage += 1
+		city = {
+			"City": citydata["features"][tutorpage - 1]["properties"]["name"],
+			"URL": citydata["features"][tutorpage - 1]["properties"]["image"], 
+			"Key1": citydata["features"][tutorpage - 1]["properties"]["key1"],
+			"Key2": citydata["features"][tutorpage - 1]["properties"]["key2"]
+		}
+
+		return jsonify(city=city,tutorpage=tutorpage)
+
 		
 if __name__ == '__main__':
 	app.run(debug = True)

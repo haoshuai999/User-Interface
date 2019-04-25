@@ -1,0 +1,89 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pella",
+        "country": "Kingdom of Macedon",
+        "image": "/static/Pella.jpg",
+        "key1": "Birthplace of Alexander the Great",
+        "key2": "Capital of ancient Greek Kingdom of Macedon, Alexander started his expedition here"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.520777,
+          40.762179
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Alexandria",
+        "country": "Egypt",
+        "image": "/static/Alexandria.png",
+        "key1": "Founded by Alexander and named after him",
+        "key2": "Location of Lighthouse of Alexandria and Library of Alexandria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.918481,
+          31.219883
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Troy",
+        "country": "Self-government",
+        "image": "/static/Troy.jpg",
+        "key1": "Famous for Trojan War and Horse",
+        "key2": "The first Asian city reached by Alexander"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.251068,
+          39.966239
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Persepolis",
+        "country": "Achaemenid Empire",
+        "image": "/static/Persepolis.jpg",
+        "key1": "Capital of Alexander's biggest rival, Achaemenid Empire (Ancient Persia)",
+        "key2": "Looted and burned by Alexander's troops"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          52.891566,
+          29.935821
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Taxila",
+        "country": "Achaemenid Empire",
+        "image": "/static/Taxila.jpg",
+        "key1": "The first Indian city reached by Alexander",
+        "key2": "Greek culture strongly impacted local people's life-styles"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.842041,
+          33.758984
+        ]
+      }
+    }
+]}
