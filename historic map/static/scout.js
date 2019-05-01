@@ -20,7 +20,7 @@ d3.json(url).then(function(data) {
 	.attr("id","d3map")
 	.append("path")
 	.attr("d", path(country))
-	.attr("fill", "lightgray")
+	.attr("fill", "#fed766")
 	.attr("stroke", "white");
 });
 
@@ -35,6 +35,8 @@ function addcity(page){
 				.data(city)
 				.enter()
 				.append("circle")
+				.transition()
+				.duration(500)
 				.attr("r", 5.5)
 				.attr("cx", function(d) {
 					return projection(d.geometry.coordinates)[0]
@@ -42,18 +44,19 @@ function addcity(page){
 				.attr("cy", function(d) {
 					return projection(d.geometry.coordinates)[1]
 				})
-				.attr("fill", "darkgreen")
-				.attr("opacity", 0.5)
-				.attr("stroke", "white")
-				.attr("stroke-width",15)
-				.attr("stroke-opacity",0)
+				.attr("fill", "black")
+				.attr("opacity", 0.75)
 
 			svg.select("#d3map").selectAll("text")
 				.data(city)
 				.enter()
 				.append("text")
+				.transition()
+				.duration(500)
+				.attr("fill", "black")
+				.style("font-weight","bold")
 				.attr("x", function(d) { 
-					return projection(d.geometry.coordinates)[0]; 
+					return (projection(d.geometry.coordinates)[0] + 5);; 
 				})
 				.attr("y", function(d) { 
 					return projection(d.geometry.coordinates)[1]; 

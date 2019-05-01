@@ -69,7 +69,6 @@ function getquestions(new_page){
 		contentType: "application/json; charset=utf-8",
 		data : JSON.stringify(new_page),
 		success: function(result){
-			console.log(result["page"])
 			addcity(result["page"])
 			showquestions(result["question"],result["score"])
 			if(result["page"] == 5){
@@ -106,7 +105,7 @@ function refresh(){
 	});
 }
 function exittip(page){
-	if(page == 5){
+	if(page >= 6){
 		$("#dialog-confirm").dialog({
 			resizable: false,
 			height: "auto",
@@ -125,7 +124,7 @@ function exittip(page){
 		});
 	}
 	else{
-		$("#dialog-confirm p").append("Do you want to save the progress?")
+		$("#dialog-confirm p").replaceWith("<p>Do you want to save the progress?</p>")
 		$("#dialog-confirm").dialog({
 			resizable: false,
 			height: "auto",
@@ -168,6 +167,14 @@ $(document).ready(function(){
 				console.log(error)
 			}
 		});
+	});
+	$("#retake").click(function(){
+		refresh();
+		location.reload();
+	});
+	$("#review").click(function(){
+		refresh();
+		window.location.href='intelligence'
 	});
 	getquestions(0);
 	answerquestions();

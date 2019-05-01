@@ -78,6 +78,8 @@ def refresh():
 
 		return "Success"
 	elif request.method == 'GET':
+		page += 1
+		
 		return jsonify(score=score,page=page)
 
 @app.route('/tutorial', methods=['GET', 'POST'])

@@ -20,7 +20,7 @@ d3.json(url).then(function(data) {
 	.attr("id","d3map")
 	.append("path")
 	.attr("d", path(country))
-	.attr("fill", "lightgray")
+	.attr("fill", "#fed766")
 	.attr("stroke", "white")
 });
 
@@ -35,7 +35,9 @@ function addcity(page){
 				.data(city)
 				.enter()
 				.append("circle")
-				.attr("r", 5.5)
+				.transition()
+				.duration(500)
+				.attr("r", 7.5)
 				.attr("cx", function(d) {
 					console.log(city)
 					return projection(d.geometry.coordinates)[0]
@@ -43,18 +45,22 @@ function addcity(page){
 				.attr("cy", function(d) {
 					return projection(d.geometry.coordinates)[1]
 				})
-				.attr("fill", "darkgreen")
-				.attr("opacity", 0.5)
+				.attr("fill", "black")
+				.attr("opacity", 0.75)
 				.attr("stroke", "white")
-				.attr("stroke-width",15)
+				.attr("stroke-width",25)
 				.attr("stroke-opacity",0)
 
 			svg.select("#d3map").selectAll("text")
 				.data(city)
 				.enter()
 				.append("text")
+				.transition()
+				.duration(500)
+				.attr("fill", "black")
+				.style("font-weight","bold")
 				.attr("x", function(d) { 
-					return projection(d.geometry.coordinates)[0]; 
+					return (projection(d.geometry.coordinates)[0] + 5); 
 				})
 				.attr("y", function(d) { 
 					return projection(d.geometry.coordinates)[1]; 
@@ -69,13 +75,13 @@ function addhover(){
 	setTimeout(function(){
 		svg.selectAll("circle")
 			.on("mouseover",function(d,i){
-				d3.select(this).style("fill","red")
+				d3.select(this).style("stroke-opacity",1)
 				showdata(d)
 			})
 			.on("mouseout",function(d,i){
-				d3.select(this).style("fill","darkgreen")
+				d3.select(this).style("stroke-opacity",0)
 			})
-	}, 2000);
+	}, 500);
 }
 function showdata(data){
 	$("#city").replaceWith("<div class='col-md-12 p-2 border-bottom border-dark text-center' id='city'>" + data.properties.name)

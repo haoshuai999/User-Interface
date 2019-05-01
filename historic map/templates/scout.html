@@ -13,7 +13,8 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <style>
-	body { 
+	body {
+		font-family: 'Times New Roman', 'Open Sans', 'Helvetica Neue', sans-serif;
 		margin:0;
 		position: absolute;
 		top:0;
@@ -21,7 +22,8 @@
 		bottom:0;
 		left:0;
 		background-image: url('{{ url_for('static', filename = 'bgmap.jpg') }}');
-		background-size: 100%;
+		background-repeat: no-repeat;
+		background-size: cover;
 	}
 	.ancientcolor{
 		background-color: #fed766;
@@ -48,9 +50,9 @@
 	.textred{
 		color: red;
 	}
-/*	button:disabledr{
-		background-color: red !important;
-	}*/
+	.conseal{
+		display: none;
+	}
 	.modal {
 	  display: none; /* Hidden by default */
 	  position: fixed; /* Stay in place */
@@ -84,16 +86,38 @@
 		<!-- The Modal -->
 		<div class="modal" id="modal0">
 			<div class="modal-content">
-				<h1 class="textgreen">Congratulations!</h1>
-				<p>You successfully gathered the important intelligence for Alexander's army.</p>
-				<button type="button" class="btn btn-warning btn-lg btn-block homepage">Homepage</button>
+				<div class="row text-center">
+					<div class="col-md-12 p-1">
+						<h1 class="textgreen">Congratulations!</h1>
+					</div>
+					<div class="col-md-12 p-1">
+						<p>You successfully gathered the important intelligence for Alexander's army.</p>
+					</div>
+					<div class="col-md-12 p-1">
+						<button type="button" class="btn btn-warning homepage">Homepage</button>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="modal" id="modal1">
 			<div class="modal-content">
-				<h1 class="textred">Failure!</h1>
-				<p>The information you gather is not accurate enough, please try again.</p>
-				<button type="button" class="btn btn-warning btn-lg btn-block homepage">Homepage</button>
+				<div class="row text-center">
+					<div class="col-md-12 p-2">					
+						<h1 class="textred">Failure!</h1>
+					</div>
+					<div class="col-md-12 p-2">	
+						<p>The information you gather is not accurate enough, please try again.</p>
+					</div>
+					<div class="col-md-4 p-2">
+						<button type="button" class="btn btn-primary" id="retake">Retake the quiz</button>
+					</div>
+					<div class="col-md-4 p-2">
+						<button type="button" class="btn btn-primary" id="review">Review the map</button>
+					</div>
+					<div class="col-md-4 p-2">
+						<button type="button" class="btn btn-warning homepage">Homepage</button>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="row m-0">
@@ -127,8 +151,8 @@
 			</div>
 		</div>
 	</div>
-	<div id="dialog-confirm" title="Go back to homepage?">
-		<p></p>
+	<div id="dialog-confirm" class="conseal" title="Go back to homepage">
+		<p>Want to leave now?</p>
 	</div>
 	<script src="../static/scout.js"></script>
 </body>

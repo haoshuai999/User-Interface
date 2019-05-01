@@ -69,8 +69,8 @@ $(document).ready(function(){
 				addcity(result["tutorpage"])
 				displaytutorial(result["city"])
 				if(result["tutorpage"] == 5){
-					$(".nextpage").replaceWith("<button type='button' class='btn btn-primary btn-lg' id='expedition'>Expedition</button>")
-					$("#guide").replaceWith("<div class='col-md-12 text-center' id='guide'><b>Hover on map to review</b></div>")
+					$(".nextpage").replaceWith("<button type='button' class='btn btn-primary btn-lg fix-width' id='expedition'>Quiz</button>")
+					$("#guide").replaceWith("<div class='col-md-12 pb-2 text-center' id='guide'><b>Hover on map to review</b></div>")
 					addhover()
 				}
 			},

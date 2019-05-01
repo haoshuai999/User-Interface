@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <style>
 	body { 
+		font-family: 'Times New Roman', 'Open Sans', 'Helvetica Neue', sans-serif;
 		margin:0;
 		position: absolute;
 		top:0;
@@ -16,11 +17,15 @@
 		bottom:0;
 		left:0;
 		background-image: url('{{ url_for('static', filename = 'bgmap.jpg') }}');
-		background-size: 100%;
+		background-repeat: no-repeat;
+		background-size: cover;
 	}
 	#city{
 		font-size: 40px;
 		font-weight: bold;
+	}
+	.fix-width{
+		width: 149px;
 	}
 	.sidebarcolor{
 		background-color: #fed766;
@@ -75,14 +80,14 @@
 					<div class="col-md-12 p-2 text-center border-bottom border-dark headline">Tutorial</div>
 				</div>
 				<div class="row">
-					<div class="col-md-12 p-2 text-center">click "Next City" to explore more cities</div>
+					<div class="col-md-12 p-2 text-center">Click "Next City" to explore more cities</div>
 				</div>
-				<div class="row">
+				<div class="row my-2">
 					<div class="col-md-6 text-center">
-						<button type="button" class="btn btn-warning btn-sm homepage">Homepage</button>
+						<button type="button" class="btn btn-warning homepage">Homepage</button>
 					</div>
 					<div class="col-md-6 text-center" id="next">
-						<button type="button" class="btn btn-primary btn-sm" id="explore">Start</button>
+						<button type="button" class="btn btn-primary" id="explore">Start</button>
 					</div>
 				</div>
 			</div>
@@ -106,7 +111,7 @@
 						</ul>
 					</div>
 					<div class="row m-1">
-						<div class='col-md-12 text-center' id='guide'></div>
+						<div class='col-md-12' id='guide'></div>
 					</div>
 				</div>
 				<div class="row" id="exp">
@@ -116,11 +121,11 @@
 			</div>
 		</div>
 	</div>
-	<div id="dialog-confirm1" title="Go back to homepage?">
-		<p></p>
+	<div id="dialog-confirm1" class="conseal" title="Go back to homepage">
+		<p>Want to leave now?</p>
 	</div>
-	<div id="dialog-confirm2" title="Take a quiz now?">
-		<p></p>
+	<div id="dialog-confirm2" class="conseal" title="Take a quiz now?">
+		<p>You can hover on map to review the information before taking the quiz</p>
 	</div>
 	<script src="{{ url_for('static', filename = 'map.js') }}"></script>
 </body>
