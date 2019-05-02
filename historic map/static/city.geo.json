@@ -7,8 +7,8 @@
         "name": "Pella",
         "country": "Kingdom of Macedon",
         "image": "/static/Pella.jpg",
-        "key1": "Birthplace of Alexander the Great",
-        "key2": "Capital of ancient Greek Kingdom of Macedon, Alexander started his expedition here"
+        "key1": "Birthplace of Alexander the Great and capital of ancient Greek Kingdom of Macedon",
+        "key2": "Alexander started his expedition here"
       },
       "geometry": {
         "type": "Point",
@@ -24,8 +24,8 @@
         "name": "Troy",
         "country": "Self-government",
         "image": "/static/Troy.jpg",
-        "key1": "Famous for Trojan War and Horse",
-        "key2": "The first Asian city reached by Alexander"
+        "key1": "The first Asian city reached by Alexander",
+        "key2": "Alexander sacrificed to Athena and poured a libation to the heroes here"
       },
       "geometry": {
         "type": "Point",
@@ -42,7 +42,7 @@
         "country": "Egypt",
         "image": "/static/Alexandria.png",
         "key1": "Founded by Alexander and named after him",
-        "key2": "Became a prosperous city until today and was famous for Lighthouse of Alexandria"
+        "key2": "Became a prosperous city and was famous for Lighthouse of Alexandria"
       },
       "geometry": {
         "type": "Point",

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% block head %}
+	<meta charset="UTF-8">
+	<title>{% block title %}{% endblock %} - Alexander the Great</title>
+
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+	<style>
+		.navbar{
+			background-color: lightgrey;
+		}
+		.nav-link{
+			text-align: center;
+		}
+		.title{
+			color: black;
+			text-align: center;
+		}
+		.hover{
+			cursor: pointer;
+			background-color: grey;
+			color: blue;
+		}
+	</style>
+	{% endblock %}
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<nav class="col-md-12 navbar navbar-expand-md">
+				<div class="col-md-4 title">
+					<a class="nav-link homepage spe_homepage">Conquer Cities with Alexander the Great</a>
+				</div>
+				<div class="col-md-4 title">
+					<a class="nav-link worldmap">Explore World Map</a>
+				</div>
+				<div class="col-md-4 title">
+					<a class="nav-link quiz">Take a Quiz</a>
+				</div>
+			</nav>
+		</div>
+		{% block content %}
+		{% endblock %}
+	</div>
+</body>
+</html>

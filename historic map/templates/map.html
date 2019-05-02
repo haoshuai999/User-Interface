@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<head>
-  <meta charset="utf-8">
+{% extends "layout.html" %}
+{% block title %}World Map{% endblock %}
+{% block head %}
+	{{ super() }}
   <script src="https://d3js.org/d3.v5.min.js"></script>
-  <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
   <script src="{{ url_for('static', filename = 'mapjq.js') }}"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <style>
 	body { 
 		font-family: 'Times New Roman', 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -24,11 +21,8 @@
 		font-size: 40px;
 		font-weight: bold;
 	}
-	.fix-width{
-		width: 149px;
-	}
 	.sidebarcolor{
-		background-color: #fed766;
+		background-color: white;
 	}
 	.headline{
 		font-size: 24px;
@@ -70,11 +64,10 @@
 		font-size: 20px;
 	}
   </style>
-</head>
+{% endblock %}
+{% block content %}
 
-<body>
-	<div class="container-fluid">
-		<div class="modal" id="modal0">
+<!-- 		<div class="modal" id="modal0">
 			<div class="modal-content">
 				<div class="row">
 					<div class="col-md-12 p-2 text-center border-bottom border-dark headline">Tutorial</div>
@@ -91,12 +84,9 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<div class="row m-0">
-			<div class="col-md-9 moveleft" id="hismap">
-				<svg></svg>
-			</div>
-			<div class="col-md-3 p-0 conseal" id="sidebar">
+			<div class="col-md-3 p-0" id="sidebar">
 				<div class="sidebarcolor">
 					<div class="row m-1">
 						<div class="col-md-12 p-2 border-bottom border-dark text-center" id="city"></div>
@@ -115,17 +105,19 @@
 					</div>
 				</div>
 				<div class="row" id="exp">
-					<div class="col-md-6"><button type="button" class="btn btn-warning btn-lg btn-block homepage">Homepage</button></div>
-					<div class="col-md-6"><button type="button" class="btn btn-primary btn-lg btn-block nextpage">Next City</button></div>
+					<div class="col-md-12"><button type="button" class="btn btn-primary btn-lg btn-block nextpage">Next City</button></div>
 				</div>
 			</div>
+			<div class="col-md-9" id="hismap">
+				<svg></svg>
+			</div>
 		</div>
-	</div>
-	<div id="dialog-confirm1" class="conseal" title="Go back to homepage">
-		<p>Want to leave now?</p>
+
+	<div id="dialog-confirm1" class="conseal" title="Want to leave now?">
+		<p>Go back to homepage</p>
 	</div>
 	<div id="dialog-confirm2" class="conseal" title="Take a quiz now?">
 		<p>You can hover on map to review the information before taking the quiz</p>
 	</div>
 	<script src="{{ url_for('static', filename = 'map.js') }}"></script>
-</body>
+{% endblock %}

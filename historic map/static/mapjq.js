@@ -40,7 +40,15 @@ function refresh(){
 	});
 }
 $(document).ready(function(){
+	$(".worldmap").attr("disabled", true).css("color","white");
+	$("nav").on("mouseover",".homepage,.quiz",function(){
+				$(this).addClass("hover")
+	})
+	$("nav").on("mouseout",".homepage,.quiz",function(){
+				$(this).removeClass("hover")
+	})
 	gettutorial()
+	addcity(1)
 	$("body").on("click",".homepage",function(){
 		$("#dialog-confirm1").dialog({
 			resizable: false,
@@ -51,7 +59,26 @@ $(document).ready(function(){
 			  "Yes": function() {
 				$(this).dialog("close")
 				refresh()
-				window.location.href='/#worldmap'
+				window.location.href='/'
+			  },
+			  Cancel: function() {
+				$(this).dialog("close");
+			  }
+			}
+		});
+	})
+	$("body").on("click",".quiz",function(){
+		$("#dialog-confirm1 p").replaceWith("<p>Go to the quiz page</p>")
+		$("#dialog-confirm1").dialog({
+			resizable: false,
+			height: "auto",
+			width: 400,
+			modal: true,
+			buttons: {
+			  "Yes": function() {
+				$(this).dialog("close")
+				refresh()
+				window.location.href='/expedition'
 			  },
 			  Cancel: function() {
 				$(this).dialog("close");
@@ -69,7 +96,7 @@ $(document).ready(function(){
 				addcity(result["tutorpage"])
 				displaytutorial(result["city"])
 				if(result["tutorpage"] == 5){
-					$(".nextpage").replaceWith("<button type='button' class='btn btn-primary btn-lg fix-width' id='expedition'>Quiz</button>")
+					$(".nextpage").replaceWith("<button type='button' class='btn btn-primary btn-lg btn-block' id='expedition'>Quiz</button>")
 					$("#guide").replaceWith("<div class='col-md-12 pb-2 text-center' id='guide'><b>Hover on map to review</b></div>")
 					addhover()
 				}
@@ -82,12 +109,12 @@ $(document).ready(function(){
 			}
 		});
 	})
-	$("#next").on("click","#explore",function(){
-		$("#modal0").hide()
-		$("#hismap").removeClass("moveleft")
-		$("#sidebar").removeClass("conseal")
-		addcity(1)
-	})
+	// $("#next").on("click","#explore",function(){
+	// 	$("#modal0").hide()
+	// 	$("#hismap").removeClass("moveleft")
+	// 	$("#sidebar").removeClass("conseal")
+	// 	addcity(1)
+	// })
 	$("#exp").on("click","#expedition",function(){
 		$("#dialog-confirm2").dialog({
 			resizable: false,

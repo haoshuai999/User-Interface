@@ -1,4 +1,4 @@
-var width = 1000, 
+var width = 950, 
 	height = 600;
 var svg = d3.select("svg")
 			.attr("width",width)
@@ -20,7 +20,7 @@ d3.json(url).then(function(data) {
 	.attr("id","d3map")
 	.append("path")
 	.attr("d", path(country))
-	.attr("fill", "#fed766")
+	.attr("fill", "lightgrey")
 	.attr("stroke", "white");
 });
 
@@ -64,6 +64,6 @@ function addcity(page){
 				.text( function (d) { 
 					return d.properties.name; 
 				})
-		}, 700);
+		}, 500);
 	});
 }

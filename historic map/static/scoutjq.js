@@ -23,7 +23,7 @@ function answerquestions(){
 				$("#op" + correct_index).attr("disabled", true).removeClass("red").addClass("green")
 				$("#next").attr("disabled", false).removeClass("disabled")
 				$("#submit").attr("disabled", false).removeClass("disabled")
-				$(".homepage").attr("disabled", true).addClass("disabled")
+				$(".homepage,.worldmap").attr("disabled", true).addClass("disabled")
 			},
 			error: function(request, status, error){
 				console.log("Error");
@@ -44,7 +44,7 @@ function answerquestions(){
 			contentType: "application/json; charset=utf-8",
 			success: function(result){
 				score = result["score"]
-				$(".homepage").attr("disabled", false).removeClass("disabled")
+				$(".homepage,.worldmap").attr("disabled", false).removeClass("disabled")
 				if(score==50){
 					$("#modal0").addClass("display")
 				}
@@ -77,7 +77,7 @@ function getquestions(new_page){
 			$(".op").attr("disabled", false)
 			$("#next").attr("disabled", true).addClass("disabled")
 			$("#submit").attr("disabled", true).addClass("disabled")
-			$(".homepage").attr("disabled", false).removeClass("disabled")
+			$(".homepage,.worldmap").attr("disabled", false).removeClass("disabled")
 		},
 		error: function(request, status, error){
 			console.log("Error");
@@ -104,7 +104,7 @@ function refresh(){
 		}
 	});
 }
-function exittip(page){
+function exittip(page,flag){
 	if(page >= 6){
 		$("#dialog-confirm").dialog({
 			resizable: false,
@@ -115,7 +115,12 @@ function exittip(page){
 			  "Yes": function() {
 				$(this).dialog("close")
 				refresh()
-				window.location.href='/#scout'
+				if(flag==0){
+					window.location.href='/'
+				}
+				else{
+					window.location.href='/intelligence'
+				}
 			  },
 			  Cancel: function() {
 				$(this).dialog("close");
@@ -133,12 +138,23 @@ function exittip(page){
 			buttons: {
 			  "Yes": function() {
 				$(this).dialog("close")
-				window.location.href='/#scout'
+				if(flag==0){
+					window.location.href='/'
+				}
+				else{
+					window.location.href='/intelligence'
+				}
 			  },
 			  "No": function() {
 				$(this).dialog("close")
 				refresh()
-				window.location.href='/#scout'
+				if(flag==0){
+					window.location.href='/'
+				}
+				else{
+					$("#dialog-confirm1 p").replaceWith("<p>Go to the world map page</p>")
+					window.location.href='/intelligence'
+				}
 			  },
 			  Cancel: function() {
 				$(this).dialog("close");
@@ -150,6 +166,13 @@ function exittip(page){
 $(document).ready(function(){
 	//console.log(page)
 	//console.log(score)
+	$(".quiz").attr("disabled", true).css("color","white");
+	$("nav").on("mouseover",".worldmap,.homepage",function(){
+				$(this).addClass("hover")
+	})
+	$("nav").on("mouseout",".worldmap,.homepage",function(){
+				$(this).removeClass("hover")
+	})
 	$("#next").attr("disabled", true).addClass("disabled");
 	$(".homepage").click(function(){
 		$.ajax({
@@ -158,7 +181,7 @@ $(document).ready(function(){
 			dataType : "json",
 			contentType: "application/json; charset=utf-8",
 			success: function(result){
-				exittip(result["page"])
+				exittip(result["page"],0)
 			},
 			error: function(request, status, error){
 				console.log("Error");
@@ -168,6 +191,23 @@ $(document).ready(function(){
 			}
 		});
 	});
+	$("body").on("click",".worldmap",function(){
+		$.ajax({
+			type: "GET",
+			url: "refresh",                
+			dataType : "json",
+			contentType: "application/json; charset=utf-8",
+			success: function(result){
+				exittip(result["page"],1)
+			},
+			error: function(request, status, error){
+				console.log("Error");
+				console.log(request)
+				console.log(status)
+				console.log(error)
+			}
+		});
+	})
 	$("#retake").click(function(){
 		refresh();
 		location.reload();

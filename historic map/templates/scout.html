@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<head>
-  <meta charset="utf-8">
+{% extends "layout.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+	{{ super() }}
   <script src="https://d3js.org/d3.v5.min.js"></script>
-  <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
   <script src="{{ url_for('static', filename = 'scoutjq.js') }}"></script>
 <!--   <script src="../static/question.json"></script> -->
   <script>
   	var score = {{score}}
   	var page = {{page}}
   </script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
   <style>
 	body {
 		font-family: 'Times New Roman', 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -79,10 +77,9 @@
 		display: block;
 	}
   </style>
-</head>
+{% endblock %}
+{% block content %}
 
-<body>
-	<div class="container-fluid">
 		<!-- The Modal -->
 		<div class="modal" id="modal0">
 			<div class="modal-content">
@@ -121,9 +118,6 @@
 			</div>
 		</div>
 		<div class="row m-0">
-			<div class="col-md-9">
-				<svg></svg>
-			</div>
 			<div class="col-md-3 p-0">
 				<div class="ancientcolor">
 					<div class="row m-1">
@@ -145,14 +139,14 @@
 				<div class="row" id="sub-btn">
 					<div class="col-md-12"><button type="button" class="btn btn-primary btn-lg btn-block" id="next">Next Question</button></div>
 				</div>
-				<div class="row">
-					<div class="col-md-12 py-2"><button type="button" class="btn btn-warning btn-lg btn-block homepage">Homepage</button></div>
-				</div>
+			</div>
+			<div class="col-md-9">
+				<svg></svg>
 			</div>
 		</div>
-	</div>
-	<div id="dialog-confirm" class="conseal" title="Go back to homepage">
-		<p>Want to leave now?</p>
+
+	<div id="dialog-confirm" class="conseal" title="Want to leave now?">
+		<p>Go back to homepage</p>
 	</div>
 	<script src="../static/scout.js"></script>
-</body>
+{% endblock %}

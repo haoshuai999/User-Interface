@@ -1,14 +1,15 @@
 $(document).ready(function(){
-	$("#background").click(function(){
-		$("#modal").addClass("displaybg")
+	$(".homepage").attr("disabled", true).css("color","white");
+	$("nav").on("mouseover",".worldmap,.quiz",function(){
+				$(this).addClass("hover")
 	})
-	$("#worldmap").click(function(){
+	$("nav").on("mouseout",".worldmap,.quiz",function(){
+				$(this).removeClass("hover")
+	})
+	$("#worldmap,.worldmap").click(function(){
 		window.location.href='intelligence'
 	})
-	$("#scout").click(function(){
+	$(".quiz").click(function(){
 		window.location.href='expedition'
-	})
-	$("#clo").on("click","#close",function(){
-		$("#modal").removeClass("displaybg")
 	})
 });
