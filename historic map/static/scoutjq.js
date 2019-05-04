@@ -39,7 +39,7 @@ function answerquestions(){
 	$("#sub-btn").on("click","#submit", function(){
 		$.ajax({
 			type: "GET",
-			url: "refresh",                
+			url: "display_questions",                
 			dataType : "json",
 			contentType: "application/json; charset=utf-8",
 			success: function(result){
@@ -168,10 +168,10 @@ $(document).ready(function(){
 	//console.log(score)
 	$(".quiz").attr("disabled", true).css("color","white");
 	$("nav").on("mouseover",".worldmap,.homepage",function(){
-				$(this).addClass("hover")
+		$(this).addClass("hover")
 	})
 	$("nav").on("mouseout",".worldmap,.homepage",function(){
-				$(this).removeClass("hover")
+		$(this).removeClass("hover")
 	})
 	$("#next").attr("disabled", true).addClass("disabled");
 	$(".homepage").click(function(){
@@ -192,6 +192,7 @@ $(document).ready(function(){
 		});
 	});
 	$("body").on("click",".worldmap",function(){
+		$("#dialog-confirm1 p").replaceWith("<p>Go to the world map page</p>")
 		$.ajax({
 			type: "GET",
 			url: "refresh",                

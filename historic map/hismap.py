@@ -51,19 +51,26 @@ def display_questions():
 	global qdata
 	global page
 
-	new_page = request.get_json()
-	if new_page == 1:
-		page += 1
-	question = {
-		"City": qdata[page - 1]["City"],
-		"Question": qdata[page - 1]["Question"], 
-		"Option1": qdata[page - 1]["Option1"],
-		"Option2": qdata[page - 1]["Option2"],
-		"Option3": qdata[page - 1]["Option3"],
-		"Option4": qdata[page - 1]["Option4"]
-	}
+	if request.method == 'POST':
+		new_page = request.get_json()
 
-	return jsonify(question=question,page=page,score=score)
+		if new_page == 1:
+			page += 1
+		question = {
+			"City": qdata[page - 1]["City"],
+			"Question": qdata[page - 1]["Question"], 
+			"Option1": qdata[page - 1]["Option1"],
+			"Option2": qdata[page - 1]["Option2"],
+			"Option3": qdata[page - 1]["Option3"],
+			"Option4": qdata[page - 1]["Option4"]
+		}
+
+		return jsonify(question=question,page=page,score=score)
+
+	elif request.method == 'GET':
+		page += 1
+
+		return jsonify(page=page,score=score)
 
 @app.route('/refresh', methods=['GET', 'POST'])
 def refresh():
@@ -78,7 +85,6 @@ def refresh():
 
 		return "Success"
 	elif request.method == 'GET':
-		page += 1
 		
 		return jsonify(score=score,page=page)
 
