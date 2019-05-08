@@ -1,6 +1,6 @@
 function displaytutorial(data){
 	$("#city").replaceWith("<div class='col-md-12 p-2 border-bottom border-dark text-center' id='city'>" + data.City)
-	$("#cityimg").replaceWith("<div class='col-md-12 p-2' id='cityimg'><img src='" + data.URL + "' alt='cityimage' class='img-fluid'>")
+	$("#cityimg").replaceWith("<div class='col-md-12 p-2 text-center' id='cityimg'><img src='" + data.URL + "' alt='cityimage' class='img-fluid'>")
 	$("#key1").replaceWith("<li id='key1'>" + data.Key1)
 	$("#key2").replaceWith("<li id='key2'>" + data.Key2)
 }

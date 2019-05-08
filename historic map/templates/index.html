@@ -7,6 +7,9 @@
 		body{
 			font-family: 'Times New Roman', 'Open Sans', 'Helvetica Neue', sans-serif;
 		}
+		#worldmap{
+			font-size: 25px;
+		}
 		.headline{
 			font-weight: bold;
 			color: white;
@@ -17,14 +20,14 @@
 			padding-right: 300px;
 			text-align: center;
 			color: white;
-			margin-top: 20px;
-			margin-bottom: 20px;
+			margin-top: 40px;
+			margin-bottom: 40px;
 		}
 		.subtitle{
 			font-size: 25px;
 		}
 		.fix-width{
-			width: 200px;
+			width: 300px;
 		}
 		.bg4{
 			background:
@@ -36,7 +39,7 @@
 		        /* bottom, image */
 		        url('{{ url_for('static', filename = 'intro4.jpg') }}');
 		    width: 100%;
-		    height: 100vh;
+		    height: 89vh;
 			background-size: 100%;
 		}
 		.displaybg{
@@ -51,18 +54,14 @@
 				<div class="row m-3">
 					<div class="col-md-12 p-3 text-center headline">Conquer Cities with Alexander the Great</div>
 				</div>
-				<div class="row m-3">
-					<div class="col-md-12 p-2 text-center"><button class="btn btn-warning fix-width" id="worldmap">World Map</button></div>
-					<!-- <div class="col-md-12 p-2 text-center"><button class="btn btn-warning fix-width" id="scout">Quiz</button></div> -->
-				</div>
 				<div class="caption">
 					<div class="row m-1">
-						<div class="col-md-12 p-1 subtitle"><b>Who is Alexander the Great?</b></div>
+						<div class="col-md-12 p-1 subtitle"><b>Who is Alexander the Great and why he is "great"?</b></div>
 					</div>
 					<div class="row m-1">
-						<div class="col-md-12 p-1">He was a king of a small Greek country called Kingdom of Macedon</div>
+						<div class="col-md-12 p-1">He was a king of Kingdom of Macedon in third century BC. By the age of thirty he had created one of the largest empires of the ancient world, stretching from Greece to northwestern India</div>
 					</div>
-					<div class="row m-1">
+<!-- 					<div class="row m-1">
 						<div class="col-md-12 p-1 subtitle"><b>Why he is "great"?</b></div>
 					</div>
 					<div class="row m-1">
@@ -73,7 +72,11 @@
 					</div>
 					<div class="row m-1">
 						<div class="col-md-12 p-1">His expedition was bloody and cruel but it also promoted cultural diffusion and syncretism between the west and middle east in third century BC</div>
-					</div>
+					</div> -->
+				</div>
+				<div class="row m-3">
+					<div class="col-md-12 p-2 text-center"><button class="btn btn-warning fix-width" id="worldmap">Explore World Map</button></div>
+					<!-- <div class="col-md-12 p-2 text-center"><button class="btn btn-warning fix-width" id="scout">Quiz</button></div> -->
 				</div>
 			</div>
 		</div>

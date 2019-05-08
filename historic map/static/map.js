@@ -1,17 +1,21 @@
-var width = 950, 
-	height = 600;
+var width = 850, 
+	height = 550;
 var svg = d3.select("svg")
 			.attr("width",width)
 			.attr("height",height);
 var projection = d3.geoMercator()
-				.center([44,33])
+				.center([40,35])
 				.scale(800)
 				.translate([width/2.5, height/2.5]);
 var path = d3.geoPath().projection(projection);
 
 var url = "https://gist.githubusercontent.com/haoshuai999/c2ef0b5f71808bbb2cfd7166704db4af/raw/f2b4a24518785fbcb6248befc4dbb753cb8b1602/alexander.geo.json";
 
-var city_url = "https://gist.githubusercontent.com/haoshuai999/8cf154c19be32079e8834aac7253bd65/raw/315f49a08849e07518e45558a733921ab8b9fd1a/city.geo.json";
+var city_url = "https://gist.githubusercontent.com/haoshuai999/8cf154c19be32079e8834aac7253bd65/raw/1bf0b82aff16461c8602563d9f59c697d83bb36b/city.geo.json";
+
+d3.selection.prototype.last = function() {
+  return d3.select(this.nodes()[this.size() - 1]);
+};
 
 d3.json(url).then(function(data) {
   var country = data;
@@ -30,6 +34,7 @@ function addcity(page){
 		for (var i = 0; i < page; i++) {
 			city.push(data.features[i])
 		}
+		$("#city").addClass("red")
 		setTimeout(function(){
 			svg.select("#d3map").selectAll("circle")
 				.data(city)
@@ -45,8 +50,8 @@ function addcity(page){
 				.attr("cy", function(d) {
 					return projection(d.geometry.coordinates)[1]
 				})
-				.attr("fill", "black")
-				.attr("opacity", 0.75)
+				.style("fill", "red")
+				.attr("opacity", 0.6)
 				.attr("stroke", "white")
 				.attr("stroke-width",25)
 				.attr("stroke-opacity",0)
@@ -57,7 +62,7 @@ function addcity(page){
 				.append("text")
 				.transition()
 				.duration(500)
-				.attr("fill", "black")
+				.style("fill","red")
 				.style("font-weight","bold")
 				.attr("x", function(d) { 
 					return (projection(d.geometry.coordinates)[0] + 5); 
@@ -68,6 +73,13 @@ function addcity(page){
 				.text( function (d) { 
 					return d.properties.name; 
 				})
+
+			svg.selectAll("circle:not(:last-child)")
+				.style("fill","black")
+
+			svg.selectAll("text:not(:last-child)")
+				.style("fill","black")
+
 			}, 500);
 		});
 }
@@ -75,17 +87,21 @@ function addhover(){
 	setTimeout(function(){
 		svg.selectAll("circle")
 			.on("mouseover",function(d,i){
+				d3.selectAll("text")
+					.style("fill","black")
+				d3.selectAll("circle")
+					.style("fill","black")
 				d3.select(this).style("stroke-opacity",1)
 				showdata(d)
 			})
 			.on("mouseout",function(d,i){
 				d3.select(this).style("stroke-opacity",0)
 			})
-	}, 700);
+	}, 1000);
 }
 function showdata(data){
 	$("#city").replaceWith("<div class='col-md-12 p-2 border-bottom border-dark text-center' id='city'>" + data.properties.name)
-	$("#cityimg").replaceWith("<div class='col-md-12 p-2' id='cityimg'><img src='" + data.properties.image + "' alt='cityimage' class='img-fluid'>")
+	$("#cityimg").replaceWith("<div class='col-md-12 p-2 text-center' id='cityimg'><img src='" + data.properties.image + "' alt='cityimage' class='img-fluid'>")
 	$("#key1").replaceWith("<li id='key1'>" + data.properties.key1)
 	$("#key2").replaceWith("<li id='key2'>" + data.properties.key2)
 	//$("#builtdate").replaceWith("<div class='col-md-12 px-2 border-bottom border-dark text-center date' id='builtdate'>Built in: <b>" + data.properties.builtdate)

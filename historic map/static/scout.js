@@ -1,17 +1,17 @@
 var width = 950, 
-	height = 600;
+	height = 550;
 var svg = d3.select("svg")
 			.attr("width",width)
 			.attr("height",height);
 var projection = d3.geoMercator()
-				.center([44,33])
+				.center([44,35])
 				.scale(800)
 				.translate([width/2.5, height/2.5]);
 var path = d3.geoPath().projection(projection);
 
 var url = "https://gist.githubusercontent.com/haoshuai999/c2ef0b5f71808bbb2cfd7166704db4af/raw/f2b4a24518785fbcb6248befc4dbb753cb8b1602/alexander.geo.json";
 
-var city_url = "https://gist.githubusercontent.com/haoshuai999/8cf154c19be32079e8834aac7253bd65/raw/b32e602ae56a59c2546ba88b21f5c9be3e0b1a08/city.geo.json";
+var city_url = "https://gist.githubusercontent.com/haoshuai999/8cf154c19be32079e8834aac7253bd65/raw/1bf0b82aff16461c8602563d9f59c697d83bb36b/city.geo.json";
 
 d3.json(url).then(function(data) {
   var country = data;
@@ -44,8 +44,8 @@ function addcity(page){
 				.attr("cy", function(d) {
 					return projection(d.geometry.coordinates)[1]
 				})
-				.attr("fill", "black")
-				.attr("opacity", 0.75)
+				.style("fill", "red")
+				.attr("opacity", 0.6)
 
 			svg.select("#d3map").selectAll("text")
 				.data(city)
@@ -53,7 +53,7 @@ function addcity(page){
 				.append("text")
 				.transition()
 				.duration(500)
-				.attr("fill", "black")
+				.style("fill","red")
 				.style("font-weight","bold")
 				.attr("x", function(d) { 
 					return (projection(d.geometry.coordinates)[0] + 5);; 
@@ -64,6 +64,12 @@ function addcity(page){
 				.text( function (d) { 
 					return d.properties.name; 
 				})
+			
+			svg.selectAll("circle:not(:last-child)")
+				.style("fill","black")
+
+			svg.selectAll("text:not(:last-child)")
+				.style("fill","black")
 		}, 500);
 	});
 }
