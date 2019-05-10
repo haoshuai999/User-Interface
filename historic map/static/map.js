@@ -104,6 +104,8 @@ function showdata(data){
 	$("#cityimg").replaceWith("<div class='col-md-12 p-2 text-center' id='cityimg'><img src='" + data.properties.image + "' alt='cityimage' class='img-fluid'>")
 	$("#key1").replaceWith("<li id='key1'>" + data.properties.key1)
 	$("#key2").replaceWith("<li id='key2'>" + data.properties.key2)
+	$("#key1").html($("#key1").html().replace('Kingdom of Macedon','<b>Kingdom of Macedon</b>').replace('The first Asian city','<b>The first Asian city</b>').replace('Capital','<b>Capital</b>'))
+	$("#key2").html($("#key2").html().replace('Lighthouse','<b>Lighthouse</b>').replace('Greek culture','<b>Greek culture</b>'))
 	//$("#builtdate").replaceWith("<div class='col-md-12 px-2 border-bottom border-dark text-center date' id='builtdate'>Built in: <b>" + data.properties.builtdate)
 	// $("#newname").replaceWith("<div class='col-md-12 p-2 border-bottom border-dark text-center headline' id='newname'>" + data.properties.newname)
 	// $("#newcountry").replaceWith("<div class='col-md-12 p-1' id='newcountry'><b>Country: </b>" + data.properties.newcountry)

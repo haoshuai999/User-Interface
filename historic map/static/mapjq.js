@@ -3,6 +3,8 @@ function displaytutorial(data){
 	$("#cityimg").replaceWith("<div class='col-md-12 p-2 text-center' id='cityimg'><img src='" + data.URL + "' alt='cityimage' class='img-fluid'>")
 	$("#key1").replaceWith("<li id='key1'>" + data.Key1)
 	$("#key2").replaceWith("<li id='key2'>" + data.Key2)
+	$("#key1").html($("#key1").html().replace('Kingdom of Macedon','<b>Kingdom of Macedon</b>').replace('The first Asian city','<b>The first Asian city</b>').replace('Capital','<b>Capital</b>'))
+	$("#key2").html($("#key2").html().replace('Lighthouse','<b>Lighthouse</b>').replace('Greek culture','<b>Greek culture</b>'))
 }
 function gettutorial(){
 	$.ajax({
@@ -96,7 +98,7 @@ $(document).ready(function(){
 				addcity(result["tutorpage"])
 				displaytutorial(result["city"])
 				if(result["tutorpage"] == 5){
-					$(".nextpage").replaceWith("<button type='button' class='btn btn-primary btn-lg btn-block' id='expedition'>Quiz</button>")
+					$(".nextpage").replaceWith("<button type='button' class='btn btn-warning btn-lg btn-block' id='expedition'>Quiz</button>")
 					$("#guide").replaceWith("<div class='col-md-12 pb-2 text-center' id='guide'><b>Hover on map to review</b></div>")
 					addhover()
 				}
