@@ -4,7 +4,7 @@ var svg = d3.select("svg")
 			.attr("width",width)
 			.attr("height",height);
 var projection = d3.geoMercator()
-				.center([40,35])
+				.center([41,35])
 				.scale(800)
 				.translate([width/2.5, height/2.5]);
 var path = d3.geoPath().projection(projection);
