@@ -79,7 +79,6 @@ $(document).ready(function(){
 			buttons: {
 			  "Yes": function() {
 				$(this).dialog("close")
-				refresh()
 				window.location.href='/expedition'
 			  },
 			  Cancel: function() {

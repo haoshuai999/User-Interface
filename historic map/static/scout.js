@@ -64,12 +64,23 @@ function addcity(page){
 				.text( function (d) { 
 					return d.properties.name; 
 				})
-			
-			svg.selectAll("circle:not(:last-child)")
-				.style("fill","black")
 
-			svg.selectAll("text:not(:last-child)")
-				.style("fill","black")
+			// svg.selectAll("circle:not(:nth-last-child(2))")
+			// 	.style("fill", function(){
+			// 		console.log("black")
+			// 		return "black"
+			// 	})
+			// svg.selectAll("circle:not(:nth-last-child(2))")
+			// 	.style("fill", "black")
+
 		}, 500);
+		setTimeout(function(){
+			svg.selectAll("circle:not(:last-of-type)")
+				.style("fill", "black")
+
+
+			svg.selectAll("text:not(:last-of-type)")
+				.style("fill","black")
+		},1100)
 	});
 }

@@ -74,10 +74,10 @@ function addcity(page){
 					return d.properties.name; 
 				})
 
-			svg.selectAll("circle:not(:last-child)")
+			svg.selectAll("circle")
 				.style("fill","black")
 
-			svg.selectAll("text:not(:last-child)")
+			svg.selectAll("text")
 				.style("fill","black")
 
 			}, 500);
